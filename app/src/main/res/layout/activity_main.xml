@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/colorPrimary"
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/textView_a"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		android:text="Working ..."
+		android:textColor="@color/colorAccent"
+		android:textSize="20dp"
+		android:textStyle="bold" />
+
+	<ProgressBar
+		android:id="@+id/progress_a"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="20dp"
+		android:layout_marginTop="10dp"
+		android:max="100" />
+
+
+
+	<TextView
+		android:id="@+id/textView_b"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="50dp"
+		android:gravity="center"
+		android:text="Working ..."
+		android:textColor="@color/colorAccent"
+		android:textSize="20dp"
+		android:textStyle="bold" />
+
+	<ProgressBar
+		android:id="@+id/progress_b"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="20dp"
+		android:layout_marginTop="10dp"
+		android:max="100" />
+
+
+
+	<TextView
+		android:id="@+id/textView_c"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="50dp"
+		android:gravity="center"
+		android:text="Working ..."
+		android:textColor="@color/colorAccent"
+		android:textSize="20dp"
+		android:textStyle="bold" />
+
+	<ProgressBar
+		android:id="@+id/progress_c"
+		style="?android:attr/progressBarStyleHorizontal"
+		android:layout_width="match_parent"
+		android:layout_height="20dp"
+		android:layout_marginTop="10dp"
+		android:max="100" />
+
+
+</LinearLayout>
