@@ -64,7 +64,7 @@
      - MainThread 에서만 Handler를 통해서 UI접근 가능므로 과다한 작업이 발생되면 성능저하가 생김.
      - Thread를 활용하는 과다한 작업 발생시 해결방법 → 별도의 Thread를 만들어 작업한 뒤 MainThread에 Message로 전달 ( O )
      - 단 UI에 영향을 주려면 MainThread에 선언한 Handler를 통해서만 접근가능
-     - 구상
+     - 작성방법
        01) MainThread에서 작업 처리가 아닌 별도의 Thread를 만듬.
            * UI와 관련있는 클래스에서 생성하면 MainThread에서 생성되므로 별도의 클래스에서 생성해야 됨.
            * 생성자에 생성하면 안됨
