@@ -56,6 +56,21 @@
            해당 객체를 매번 생성하고 소멸시키지 않는다(매번 생성하고 소멸시키게 되면 시스템의 부하를 그만큼 높이는 것이 되기 때문)
            따라서 컨슈머는 작업을 풀(Pool)에 보관해 두었다가 프로듀서의 요청이 있을 때마다 즉시 실행 처리를 하게 된다.
 
+  ○ Android - Thread
+     - 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
+     - Handler를 통해 사용
+
+  ○ Android - Looper
+     - MainThread 에서만 Handler를 통해서 UI접근 가능므로 과다한 작업이 발생되면 성능저하가 생김.
+     - Thread를 활용하는 과다한 작업 발생시 해결방법 → 별도의 Thread를 만들어 작업한 뒤 MainThread에 Message로 전달 ( O )
+     - 단 UI에 영향을 주려면 MainThread에 선언한 Handler를 통해서만 접근가능
+     - 구상
+       01) MainThread에서 작업 처리가 아닌 별도의 Thread를 만듬.
+           * UI와 관련있는 클래스에서 생성하면 MainThread에서 생성되므로 별도의 클래스에서 생성해야 됨.
+           * 생성자에 생성하면 안됨
+       02) 별도의 Thread에서 전달한 정보를 받아 처리 할 수 있도록 MainThread에 Handler만 작성
+       03) 별도의 Thread에서 MainThread의 Handler에 Message 전송
+
   ○ 학습체크
       - 스레드와 멀티스레드란?
       - 자바 스레드 작성법은?
@@ -127,12 +142,12 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         //Sector A - Thread를 새롭게 정의하여 사용
-        thread_custom = new ProgressThread(new ProgressHandler(PB_bar_a,PB_textView_a, "Thread"));
-        //thread_custom = new ProgressThread(PB_bar_a,PB_textView_a, "Thread");
+        //thread_custom = new ProgressThread(new ProgressHandler(PB_bar_a,PB_textView_a, "Thread"));
+        thread_custom = new ProgressThread(PB_bar_a,PB_textView_a, "Thread");
 
         //Sector B - 기존 Thread 에 Runnable를 끼워서 사용
-        runnable = new ProgressRunnable(new ProgressHandler(PB_bar_b,PB_textView_b, "Runnable"));
-        //runnable = new ProgressRunnable(PB_bar_b,PB_textView_b, "Runnable");
+        //runnable = new ProgressRunnable(new ProgressHandler(PB_bar_b,PB_textView_b, "Runnable"));
+        runnable = new ProgressRunnable(PB_bar_b,PB_textView_b, "Runnable");
 
         //Sector C - 메소드안에 한꺼번에 해결하는 방법
         thread_basic =
