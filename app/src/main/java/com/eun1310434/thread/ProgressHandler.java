@@ -86,19 +86,14 @@ package com.eun1310434.thread;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class ProgressHandler extends Handler {
-    private ProgressBar PB_bar;
-    private TextView PB_textView;
-    private String handlerName;
-
-    public ProgressHandler(ProgressBar _PB_bar, TextView _PB_textView, String _handlerName){
-        this.PB_bar = _PB_bar;
-        this.PB_textView = _PB_textView;
-        this.handlerName = _handlerName;
+    //인터페이스를 활용하여 변경시 연결을 위한 리스너 새로 정의
+    //innerClass
+    public interface OnProgressListener {
+        void onProgressChanged(int incrementValue);
     }
+    OnProgressListener listener;
 
     public void handleMessage(Message msg) {
         //Bundle에 담음 메세지를 갖고옴
@@ -106,14 +101,13 @@ public class ProgressHandler extends Handler {
         int incrementValue =bundle.getInt("incrementValue");
         String displayValue =bundle.getString("displayValue");
 
-        //기존 increase의 크기에 10만큼 붙여 증가
-        PB_bar.incrementProgressBy(incrementValue);
+        listener.onProgressChanged(incrementValue);
+    }
 
-        //UI에 표시
-        if (PB_bar.getProgress() == PB_bar.getMax()) {
-            PB_textView.setText("Complete");
-        } else {
-            PB_textView.setText(handlerName+" "+displayValue);
-        }
+    //handleMessage가 처리될 때 UI 객체를 손쉽게 처리하기 위하여 Listener를 활용
+    public void setOnProgressListener(OnProgressListener _listener){
+        // 해당 클래스를 활용하는 곳에서 setOnProgressListener 선언시
+        // OnProgressListener 생성
+        this.listener = _listener;
     }
 }

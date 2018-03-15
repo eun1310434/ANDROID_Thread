@@ -80,14 +80,11 @@
       - 스레드 풀의 사용 목적은?
 =====================================================================*/
 
-
 package com.eun1310434.thread;
 
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class ProgressThread extends Thread {
     boolean T_isRunning;
@@ -97,12 +94,6 @@ public class ProgressThread extends Thread {
 
     public ProgressThread(ProgressHandler _handler){
         T_handler = _handler;
-        T_isRunning = true;
-    }
-
-
-    public ProgressThread(ProgressBar _PB_bar, TextView _PB_textView, String _handlerName){
-        T_handler = new ProgressHandler(_PB_bar,_PB_textView,_handlerName);
         T_isRunning = true;
     }
 

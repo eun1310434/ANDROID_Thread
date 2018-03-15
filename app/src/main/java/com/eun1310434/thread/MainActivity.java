@@ -142,12 +142,42 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         //Sector A - Thread를 새롭게 정의하여 사용
-        //thread_custom = new ProgressThread(new ProgressHandler(PB_bar_a,PB_textView_a, "Thread"));
-        thread_custom = new ProgressThread(PB_bar_a,PB_textView_a, "Thread");
+        ProgressHandler progressHandler_a = new ProgressHandler();
+        progressHandler_a.setOnProgressListener(new ProgressHandler.OnProgressListener() {
+            @Override
+            public void onProgressChanged(int incrementValue) {
+                PB_bar_a.incrementProgressBy(incrementValue);
+
+                //UI에 표시
+                if (PB_bar_a.getProgress() == PB_bar_a.getMax()) {
+                    PB_textView_a.setText("Complete");
+                } else {
+                    PB_textView_a.setText("Thread : "+PB_bar_a.getProgress() +"%");
+                }
+
+            }
+        });
+        thread_custom = new ProgressThread(progressHandler_a);
+
 
         //Sector B - 기존 Thread 에 Runnable를 끼워서 사용
-        //runnable = new ProgressRunnable(new ProgressHandler(PB_bar_b,PB_textView_b, "Runnable"));
-        runnable = new ProgressRunnable(PB_bar_b,PB_textView_b, "Runnable");
+        ProgressHandler progressHandler_b = new ProgressHandler();
+        progressHandler_b.setOnProgressListener(new ProgressHandler.OnProgressListener() {
+            @Override
+            public void onProgressChanged(int incrementValue) {
+                PB_bar_b.incrementProgressBy(incrementValue);
+
+                //UI에 표시
+                if (PB_bar_b.getProgress() == PB_bar_b.getMax()) {
+                    PB_textView_b.setText("Complete");
+                } else {
+                    PB_textView_b.setText("Runnable : "+PB_bar_b.getProgress() +"%");
+                }
+
+            }
+        });
+        runnable = new ProgressRunnable(progressHandler_b);
+
 
         //Sector C - 메소드안에 한꺼번에 해결하는 방법
         thread_basic =
@@ -187,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         thread_custom.start();
-                        new Thread(runnable).start();
+                        new Thread(runnable).start(); //Runnable을 상속받으면 Thread를 활용하여 시작
                         thread_basic.start();
                     }
                 }, 1000);

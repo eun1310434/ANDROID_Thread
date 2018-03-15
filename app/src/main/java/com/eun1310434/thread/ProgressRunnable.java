@@ -88,8 +88,6 @@ package com.eun1310434.thread;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 public class ProgressRunnable implements Runnable{
     boolean T_isRunning;
@@ -101,12 +99,6 @@ public class ProgressRunnable implements Runnable{
         T_handler = _handler;
         T_isRunning = true;
     }
-
-    public ProgressRunnable(ProgressBar _PB_bar, TextView _PB_textView, String _handlerName){
-        T_handler = new ProgressHandler(_PB_bar,_PB_textView,_handlerName);
-        T_isRunning = true;
-    }
-
 
     @Override
     public void run() {
