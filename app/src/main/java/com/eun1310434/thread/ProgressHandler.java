@@ -1,16 +1,11 @@
 /*=====================================================================
-□ Infomation
-  ○ Data : 13.03.2018
+□ INFORMATION
+  ○ Data : 23.05.2018
   ○ Mail : eun1310434@naver.com
   ○ Blog : https://blog.naver.com/eun1310434
   ○ Reference : Do it android app Programming
 
-□ Function
-  ○ 스레드를 활용한 프로그레스바
-  ○ 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
-     - Handler를 통해 접근.
-
-□ Study
+□ STUDY
   ○ Thread
       - 프로세스 내에서 실행되는 시작점과 종료점이 있는 일련의 작업 흐름 단위.
 
@@ -64,7 +59,7 @@
      - MainThread 에서만 Handler를 통해서 UI접근 가능므로 과다한 작업이 발생되면 성능저하가 생김.
      - Thread를 활용하는 과다한 작업 발생시 해결방법 → 별도의 Thread를 만들어 작업한 뒤 MainThread에 Message로 전달 ( O )
      - 단 UI에 영향을 주려면 MainThread에 선언한 Handler를 통해서만 접근가능
-     - 작성방법
+     - 구상
        01) MainThread에서 작업 처리가 아닌 별도의 Thread를 만듬.
            * UI와 관련있는 클래스에서 생성하면 MainThread에서 생성되므로 별도의 클래스에서 생성해야 됨.
            * 생성자에 생성하면 안됨
@@ -78,6 +73,12 @@
       - 스레드의 동기화 방법은?
       - 스레드 그룹의 사용 목적은?
       - 스레드 풀의 사용 목적은?
+
+
+□ FUNCTION
+  ○ 스레드를 활용한 프로그레스바
+  ○ 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
+     - Handler를 통해 접근.
 =====================================================================*/
 
 

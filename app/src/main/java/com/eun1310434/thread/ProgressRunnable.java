@@ -1,18 +1,11 @@
 /*=====================================================================
-□ Infomation
-  ○ Data : 13.03.2018
+□ INFORMATION
+  ○ Data : 23.05.2018
   ○ Mail : eun1310434@naver.com
   ○ Blog : https://blog.naver.com/eun1310434
   ○ Reference : Do it android app Programming
 
-□ Function
-  ○ Runnable
-      - Thread를 extends하여 구현한 클래스는 다른 클래스를 extends하지 못함
-      - Runnable interface로 implements하면 Thread가 아닌 다른 클래스를 extends 가능
-      - Custormizing Thread : Only extends Thread
-      - Thread(Runnable) : Thread function + Other Class can extends
-
-□ Study
+□ STUDY
   ○ Thread
       - 프로세스 내에서 실행되는 시작점과 종료점이 있는 일련의 작업 흐름 단위.
 
@@ -80,6 +73,12 @@
       - 스레드의 동기화 방법은?
       - 스레드 그룹의 사용 목적은?
       - 스레드 풀의 사용 목적은?
+
+
+□ FUNCTION
+  ○ 스레드를 활용한 프로그레스바
+  ○ 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
+     - Handler를 통해 접근.
 =====================================================================*/
 
 

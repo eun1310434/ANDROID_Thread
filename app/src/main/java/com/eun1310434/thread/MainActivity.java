@@ -1,16 +1,11 @@
 /*=====================================================================
-□ Infomation
-  ○ Data : 13.03.2018
+□ INFORMATION
+  ○ Data : 23.05.2018
   ○ Mail : eun1310434@naver.com
   ○ Blog : https://blog.naver.com/eun1310434
   ○ Reference : Do it android app Programming
 
-□ Function
-  ○ 스레드를 활용한 프로그레스바
-  ○ 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
-     - Handler를 통해 접근.
-
-□ Study
+□ STUDY
   ○ Thread
       - 프로세스 내에서 실행되는 시작점과 종료점이 있는 일련의 작업 흐름 단위.
 
@@ -78,6 +73,12 @@
       - 스레드의 동기화 방법은?
       - 스레드 그룹의 사용 목적은?
       - 스레드 풀의 사용 목적은?
+
+
+□ FUNCTION
+  ○ 스레드를 활용한 프로그레스바
+  ○ 안드로이드에서 메모리에 Thread를 활용 시 Main Thread와 동시 접근되어 데드락 발생
+     - Handler를 통해 접근.
 =====================================================================*/
 
 package com.eun1310434.thread;
@@ -150,9 +151,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //UI에 표시
                 if (PB_bar_a.getProgress() == PB_bar_a.getMax()) {
-                    PB_textView_a.setText("Complete");
+                    PB_textView_a.setText("Thread + Handler : Complete");
                 } else {
-                    PB_textView_a.setText("Thread : "+PB_bar_a.getProgress() +"%");
+                    PB_textView_a.setText("Thread + Handler : "+PB_bar_a.getProgress() +"%");
                 }
 
             }
@@ -169,9 +170,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //UI에 표시
                 if (PB_bar_b.getProgress() == PB_bar_b.getMax()) {
-                    PB_textView_b.setText("Complete");
+                    PB_textView_b.setText("Runnable + Handler : Complete");
                 } else {
-                    PB_textView_b.setText("Runnable : "+PB_bar_b.getProgress() +"%");
+                    PB_textView_b.setText("Runnable + Handler : "+PB_bar_b.getProgress() +"%");
                 }
 
             }
@@ -196,9 +197,9 @@ public class MainActivity extends AppCompatActivity {
 
                                                         PB_bar_c.incrementProgressBy(1);
                                                         if (PB_bar_c.getProgress() == PB_bar_c.getMax()) {
-                                                            PB_textView_c.setText("Complete");
+                                                            PB_textView_c.setText("Only Method : Complete");
                                                         } else {
-                                                            PB_textView_c.setText("Only Method " + PB_bar_c.getProgress()+"%");
+                                                            PB_textView_c.setText("Only Method : " + PB_bar_c.getProgress()+"%");
                                                         }
                                                     }
                                                 });
