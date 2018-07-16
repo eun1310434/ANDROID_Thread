@@ -93,21 +93,23 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     //Sector A - Thread를 새롭게 정의하여 사용
-    ProgressBar PB_bar_a;
-    TextView PB_textView_a;
-    ProgressThread thread_custom;
+    private ProgressBar PB_bar_a;
+    private TextView PB_textView_a;
+    private ProgressThread thread_custom;
 
     //Sector B - 기존 Thread 에 Runnable를 끼워서 사용
-    ProgressBar PB_bar_b;
-    TextView PB_textView_b;
-    ProgressRunnable runnable;
+    private ProgressBar PB_bar_b;
+    private TextView PB_textView_b;
+    private ProgressRunnable runnable;
 
     //Sector C - 메소드안에 한꺼번에 해결하는 방법
-    ProgressBar PB_bar_c;
-    TextView PB_textView_c;
-    boolean thread_basic_isRunning = true;
-    Thread thread_basic;
-    Handler handler_basic;
+    private ProgressBar PB_bar_c;
+    private TextView PB_textView_c;
+
+    //Thread
+    private boolean thread_basic_isRunning = true;
+    private Thread thread_basic;
+    private Handler handler_basic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,31 +119,24 @@ public class MainActivity extends AppCompatActivity {
         //Sector A - Thread를 새롭게 정의하여 사용
         PB_bar_a = (ProgressBar) findViewById(R.id.progress_a);
         PB_bar_a.setMax(100);
-
         PB_textView_a = (TextView) findViewById(R.id.textView_a);
-
 
         //Sector B - 기존 Thread 에 Runnable를 끼워서 사용
         PB_bar_b = (ProgressBar) findViewById(R.id.progress_b);
         PB_bar_b.setMax(100);
-
         PB_textView_b = (TextView) findViewById(R.id.textView_b);
-
-
 
         //Sector C - 메소드안에 한꺼번에 해결하는 방법
         PB_bar_c = (ProgressBar) findViewById(R.id.progress_c);
         PB_bar_c.setMax(100);
-
         PB_textView_c = (TextView) findViewById(R.id.textView_c);
+
+        //Thread
         handler_basic = new Handler(); // MainThread에서 선언을 하였기에 Looper가 필요하지 않음.
-
-
     }
 
     public void onStart() {
         super.onStart();
-
         //Sector A - Thread를 새롭게 정의하여 사용
         ProgressHandler progressHandler_a = new ProgressHandler();
         progressHandler_a.setOnProgressListener(new ProgressHandler.OnProgressListener() {
@@ -210,6 +205,8 @@ public class MainActivity extends AppCompatActivity {
                             }
                         });
         thread_basic_isRunning = true;
+
+
 
 
         //1초 뒤에 실행
